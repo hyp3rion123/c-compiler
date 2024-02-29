@@ -1,0 +1,91 @@
+.ALPHABET
+0-9 -
+.STATES
+start
+finish!
+error
+neg
+neg1!
+neg12x!
+neg10x!
+neg29!
+pos1!
+pos2!
+pos39!
+midpos!
+maxpos!
+.TRANSITIONS
+error       0-9 -   error
+finish      0-9 -   error
+start       0       finish 
+start       -       neg
+start       2       pos2
+start       1       pos1
+start       3-9     pos39
+neg         0 -     error
+neg         1       neg1
+neg         2-9     neg29 
+neg1        -       error
+neg1        0 1     neg10x
+neg1        2       neg12x
+neg1        3-9     finish
+neg29       -       error   
+neg29       0-9     finish
+neg10x      -       error
+neg10x      0-9     finish
+neg12x      - 9     error
+neg12x      0-8     finish
+pos1        -       error
+pos1        0-9     pos39   
+pos39       -       error   
+pos39       0-9     finish
+pos2        -       error
+pos2        6-9     finish
+pos2        0-4     midpos
+pos2        5       maxpos
+midpos      0-9     finish
+midpos      -       error
+maxpos      6-9 -   error  
+maxpos      0-5     finish
+.INPUT
+0
+-0
+3
+-7
+-9
+-10
+-87
+-99
+-100
+-111
+-125
+-128
+-129
+-165
+-1000
+10
+15
+19
+20
+25
+29
+30
+37
+39
+99
+100
+115
+186
+199
+200
+225
+231
+255
+256
+375
+32134
+
+
+
+
+

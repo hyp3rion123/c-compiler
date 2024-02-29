@@ -1,0 +1,5 @@
+// Variable initialized to value of wrong type
+int wain(int a, int b) { 
+  int num = NULL;
+  return 241; 
+}

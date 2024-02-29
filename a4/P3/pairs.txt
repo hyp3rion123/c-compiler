@@ -1,0 +1,24 @@
+.ALPHABET
+( , ) 0-9
+[   ] a-z
+.STATES
+empty
+( (m (m, (m,n (m,n)!
+[ [x [x, [x,y [x,y]!
+.TRANSITIONS
+empty ( (
+empty [ [
+(    0-9 (m
+(m   0-9 (m
+(m   ,   (m,
+(m,  0-9 (m,n
+(m,n 0-9 (m,n
+(m,n )   (m,n)
+[    a-z [x
+[x   a-z [x
+[x   ,   [x,
+[x,  a-z [x,y
+[x,y a-z [x,y
+[x,y ]   [x,y]
+.INPUT
+[invalid,pair

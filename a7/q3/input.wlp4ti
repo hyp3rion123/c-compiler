@@ -1,0 +1,185 @@
+start BOF procedures EOF
+BOF BOF
+procedures main
+main INT WAIN LPAREN dcl COMMA dcl RPAREN LBRACE dcls statements RETURN expr SEMI RBRACE
+INT int
+WAIN wain
+LPAREN (
+dcl type ID
+type INT
+INT int
+ID n : int
+COMMA ,
+dcl type ID
+type INT
+INT int
+ID b : int
+RPAREN )
+LBRACE {
+dcls dcls dcl BECOMES NUM SEMI
+dcls dcls dcl BECOMES NUM SEMI
+dcls dcls dcl BECOMES NUM SEMI
+dcls .EMPTY
+dcl type ID
+type INT
+INT int
+ID power : int
+BECOMES =
+NUM 1 : int
+SEMI ;
+dcl type ID
+type INT
+INT int
+ID log : int
+BECOMES =
+NUM 0 : int
+SEMI ;
+dcl type ID
+type INT
+INT int
+ID sqrt : int
+BECOMES =
+NUM 0 : int
+SEMI ;
+statements statements statement
+statements statements statement
+statements statements statement
+statements statements statement
+statements .EMPTY
+statement WHILE LPAREN test RPAREN LBRACE statements RBRACE
+WHILE while
+LPAREN (
+test expr LE expr
+expr term : int
+term term STAR factor : int
+term factor : int
+factor ID : int
+ID power : int
+STAR *
+factor ID : int
+ID b : int
+LE <=
+expr term : int
+term factor : int
+factor ID : int
+ID n : int
+RPAREN )
+LBRACE {
+statements statements statement
+statements statements statement
+statements .EMPTY
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID power : int
+BECOMES =
+expr term : int
+term term STAR factor : int
+term factor : int
+factor ID : int
+ID power : int
+STAR *
+factor ID : int
+ID b : int
+SEMI ;
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID log : int
+BECOMES =
+expr expr PLUS term : int
+expr term : int
+term factor : int
+factor ID : int
+ID log : int
+PLUS +
+term factor : int
+factor NUM : int
+NUM 1 : int
+SEMI ;
+RBRACE }
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID power : int
+BECOMES =
+expr term : int
+term factor : int
+factor NUM : int
+NUM 1 : int
+SEMI ;
+statement WHILE LPAREN test RPAREN LBRACE statements RBRACE
+WHILE while
+LPAREN (
+test expr GE expr
+expr term : int
+term term SLASH factor : int
+term factor : int
+factor ID : int
+ID n : int
+SLASH /
+factor LPAREN expr RPAREN : int
+LPAREN (
+expr expr PLUS term : int
+expr term : int
+term factor : int
+factor ID : int
+ID power : int
+PLUS +
+term factor : int
+factor NUM : int
+NUM 1 : int
+RPAREN )
+GE >=
+expr term : int
+term factor : int
+factor LPAREN expr RPAREN : int
+LPAREN (
+expr expr PLUS term : int
+expr term : int
+term factor : int
+factor ID : int
+ID power : int
+PLUS +
+term factor : int
+factor NUM : int
+NUM 1 : int
+RPAREN )
+RPAREN )
+LBRACE {
+statements statements statement
+statements .EMPTY
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID power : int
+BECOMES =
+expr expr PLUS term : int
+expr term : int
+term factor : int
+factor ID : int
+ID power : int
+PLUS +
+term factor : int
+factor NUM : int
+NUM 1 : int
+SEMI ;
+RBRACE }
+statement lvalue BECOMES expr SEMI
+lvalue ID : int
+ID sqrt : int
+BECOMES =
+expr term : int
+term factor : int
+factor ID : int
+ID power : int
+SEMI ;
+RETURN return
+expr expr MINUS term : int
+expr term : int
+term factor : int
+factor ID : int
+ID sqrt : int
+MINUS -
+term factor : int
+factor ID : int
+ID log : int
+SEMI ;
+RBRACE }
+EOF EOF

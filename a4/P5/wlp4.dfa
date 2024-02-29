@@ -1,0 +1,55 @@
+.ALPHABET
+a-z
+A-Z
+0-9
+(
+)
+{
+}
+=
+!
+<
+>
++
+-
+*
+/
+%
+,
+;
+[
+]
+&
+.STATES
+start!
+NUM!
+ID!
+LPAREN!
+error
+bang
+stopID
+slash!
+comment!
+zero!
+finish!
+finishsymb!
+waiteq
+symbandeq!
+.TRANSITIONS
+start       a-z A-Z                                 ID
+ID          a-z A-Z 0-9                             ID
+ID          ( ) { } + - * % , ; [ ] & = < > ! = /   stopID
+NUM         ( ) { } + - * % , ; [ ] & = < > ! = /   stopID
+start       0                                       zero
+start       1-9                                     NUM
+NUM         0-9                                     NUM
+start       ( ) { } + - * % , ; [ ] &               finishsymb
+start       = < >                                   waiteq
+waiteq      ( ) { } + - * % , ; [ ] & < > ! / a-z A-Z 0-9  stopID
+waiteq      =                                       symbandeq
+start       !                                       bang
+bang        =                                       finish
+start       /                                       slash
+slash       ( ) { } + - * % , ; [ ] & < > ! = a-z A-Z 0-9  stopID
+slash       /                                       comment
+.INPUT

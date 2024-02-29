@@ -1,0 +1,2 @@
+int f(int c) {return c;}
+int wain(int a, int b) { return f(a); }

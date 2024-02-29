@@ -1,0 +1,75 @@
+int wain(int* begin, int size){
+  int* occs = NULL;
+  int i = 0;
+  int j = 0;
+  int max = 0;
+  int smallestAbsValue = 250; //any number > 241
+  int absValue = 0;
+  int smallestAbsValueIdx = 0;
+  int tieCount = 0;
+  int maxIndecesSize = 0;
+  int* maxIndeces = NULL; 
+  int toReturn = 0;
+  occs = new int[483]; //storing numbers from -241:241 #of occurences of each positive number
+  maxIndeces = new int[500]; //realistically we won't need all of these since they won't all have the same # of occs 
+  while(i < 483) {
+      *(occs+i) = 0; //initialize all elements to 0
+      i = i + 1;
+  }
+  //Loop through begin and for every element n, increment occs[n]
+  //Every time we add, check if max has been reached, if so, modify max
+  i = 0;
+  while(i < size) {
+    //value at *(begin+i)
+    *(occs+*(begin+i)+241) = *(occs+*(begin+i)+241)+1;
+    if(*(occs+*(begin+i)+241) > max) {
+      max = *(occs+*(begin+i)+241);
+    }else {}
+    i = i + 1;
+  }
+  i = 0;
+  //Create an array of indeces that have n = MAX occurences of their respective numbers
+  while(i < 483) {
+    if(*(occs+i) == max) {
+      *(maxIndeces+j) = i;
+      j = j + 1;
+      maxIndecesSize = maxIndecesSize + 1;
+    }else {}
+    i = i + 1;
+  }
+
+  i = 0;
+  //Break tie by:
+  //1)Checking which has the smallest absolute value
+  //2)If multiple with same absolute value, choose the one that is negative
+  if(maxIndecesSize == 1) {
+    toReturn = *(maxIndeces)-241; //return maxIndeces[0] since this is the non-contested most occuring element
+  } else {
+    while(i < maxIndecesSize) {
+      if(*(maxIndeces+i) <= 241) {
+        absValue = 241 - *(maxIndeces+i);
+      } else {
+        absValue = *(maxIndeces+i) - 241;
+      }
+      if(absValue == smallestAbsValue) {
+        tieCount = tieCount + 1;
+      } else {}
+      if(absValue < smallestAbsValue) {
+        smallestAbsValue = absValue;
+        smallestAbsValueIdx = i;
+        tieCount = 0;
+      } else{}      
+      i = i + 1;
+    }
+
+    if(tieCount == 0) {
+      toReturn = *(maxIndeces+smallestAbsValueIdx)-241;
+    } else {//there are two elements tied for the smallestAbsValue -> return the negative one
+      toReturn = 0 - smallestAbsValue;
+    }
+    
+  }
+  delete [] occs;
+  delete [] maxIndeces;
+  return toReturn;
+}

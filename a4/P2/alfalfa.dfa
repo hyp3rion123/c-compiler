@@ -1,0 +1,38 @@
+.ALPHABET
+a l f
+.STATES
+start
+first_a
+first_l
+first_f
+second_a
+second_l
+second_f
+finish!
+error
+.TRANSITIONS
+start       a       first_a
+start       l f     error
+first_a     l       first_l
+first_a     a f     error
+first_l     f       first_f
+first_l     a l     error
+first_f     a       second_a
+first_f     l f     error
+second_a    l       second_l
+second_a    a f     error
+second_l    f       second_f
+second_l    a l     error
+second_f    a       finish
+second_f    l f     error
+finish      a l f   finish
+.INPUT
+.EMPTY
+alfalfa alfal aalfalfa allfalfa
+alffalfa
+alfaalfa
+alfallfa
+alfalffa
+alfalfaa
+falalalfalfa
+falalafafalfalfaaafala
